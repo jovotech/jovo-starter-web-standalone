@@ -38,13 +38,6 @@ app.setHandler({
       'John',
       'Eva',
       'Max',
-      'Sophie',
-      'Leon',
-      'More',
-      'even more',
-      'more',
-      'more',
-      ' more',
     ]);
   },
 
