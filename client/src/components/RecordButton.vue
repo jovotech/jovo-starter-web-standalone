@@ -5,7 +5,7 @@
     @touchstart="onMouseDown"
     @click="onClick"
   >
-    <play-icon v-if="!$client.isInitialized" class="text-gray-700"/>
+    <play-icon v-if="!$client.isInitialized" class="text-gray-700" />
     <mic-icon v-else :class="[$client.isRecordingInput ? 'text-red-600' : 'text-gray-700']" />
   </button>
 </template>
@@ -14,6 +14,7 @@
 import MicIcon from 'vue-feather-icons/icons/MicIcon';
 import PlayIcon from 'vue-feather-icons/icons/PlayIcon';
 import { Component, Vue } from 'vue-property-decorator';
+import { RequestType } from 'jovo-client-web-vue';
 
 @Component({
   name: 'record-button',
@@ -32,6 +33,7 @@ export default class RecordButton extends Vue {
   async onClick(event: MouseEvent) {
     if (!this.$client.isInitialized) {
       await this.$client.initialize();
+      await this.$client.createRequest({ type: RequestType.Launch }).send();
       window.addEventListener('keydown', this.onKeyDown);
     }
   }
