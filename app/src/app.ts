@@ -1,9 +1,7 @@
 import { App } from 'jovo-framework';
 import { WebPlatform } from 'jovo-platform-web';
-import { JovoDebugger } from 'jovo-plugin-debugger';
 import { FileDb } from 'jovo-db-filedb';
-import { LexSlu } from 'jovo-slu-lex';
-import { PollyTts } from 'jovo-tts-polly';
+import { NlpjsNlu } from 'jovo-nlu-nlpjs';
 
 // ------------------------------------------------------------------
 // APP INITIALIZATION
@@ -12,16 +10,13 @@ import { PollyTts } from 'jovo-tts-polly';
 const app = new App();
 
 const webPlatform = new WebPlatform();
-
-app.use(webPlatform, new JovoDebugger(), new FileDb());
-
 webPlatform.use(
-  new LexSlu({
-    botAlias: process.env.LEX_BOT_ALIAS,
-    botName: process.env.LEX_BOT_NAME,
-  }),
-  // new PollyTts(),
+  new NlpjsNlu(),
 );
+
+app.use(webPlatform, new FileDb());
+
+
 
 // ------------------------------------------------------------------
 // APP LOGIC
@@ -29,20 +24,24 @@ webPlatform.use(
 
 app.setHandler({
   LAUNCH() {
-    return this.toIntent('HelloWorldIntent');
+    return this.ask('Hold the microphone button and try to change the background color to blue.');
   },
 
-  HelloWorldIntent() {
-    this.ask("Hello World! What's your name?", 'Please tell me your name.');
-    this.$webApp?.showQuickReplies([
-      'John',
-      'Eva',
-      'Max',
-    ]);
-  },
+  ColorIntent() {
+    const color = this.$inputs.color?.key;
 
-  MyNameIsIntent() {
-    this.tell('Hey ' + this.$inputs.name.value + ', nice to meet you!');
+    if (!color) {
+      return this.ask('I could not understand the color. Try again?');
+    }
+
+    // this.$webApp?.addActions([
+    //   {
+    //     type: 'CUSTOM',
+    //     command: 'set-color',
+    //     value: color,
+    //   },
+    // ]);
+    return this.tell(`OK, ${color}.`);
   },
 });
 

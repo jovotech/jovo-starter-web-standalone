@@ -2,61 +2,30 @@
   "invocation": "my test app",
   "intents": [
     {
-      "name": "HelloWorldIntent",
-      "phrases": ["hello", "say hello", "say hello world"]
-    },
-    {
-      "name": "MyNameIsIntent",
-      "phrases": ["{name}", "my name is {name}", "i am {name}", "you can call me {name}"],
+      "name": "ColorIntent",
+      "phrases": ["{color}", "color {color}", "i want {color}"],
       "inputs": [
         {
-          "name": "name",
-          "type": {
-            "alexa": "AMAZON.US_FIRST_NAME",
-            "dialogflow": "@sys.given-name"
-          }
+          "name": "color",
+          "type": "ColorType"
         }
       ]
     }
   ],
-  "alexa": {
-    "interactionModel": {
-      "languageModel": {
-        "intents": [
-          {
-            "name": "AMAZON.CancelIntent",
-            "samples": []
-          },
-          {
-            "name": "AMAZON.HelpIntent",
-            "samples": []
-          },
-          {
-            "name": "AMAZON.StopIntent",
-            "samples": []
-          }
-        ]
-      }
+  "inputTypes": [
+    {
+      "name": "ColorType",
+      "values": [
+        {
+          "value": "red"
+        },
+        {
+          "value": "green"
+        },
+        {
+          "value": "blue"
+        }
+      ]
     }
-  },
-  "dialogflow": {
-    "intents": [
-      {
-        "name": "Default Fallback Intent",
-        "auto": true,
-        "webhookUsed": true,
-        "fallbackIntent": true
-      },
-      {
-        "name": "Default Welcome Intent",
-        "auto": true,
-        "webhookUsed": true,
-        "events": [
-          {
-            "name": "WELCOME"
-          }
-        ]
-      }
-    ]
-  }
+  ]
 }
