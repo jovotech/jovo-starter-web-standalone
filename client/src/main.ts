@@ -5,7 +5,7 @@ import App from './App.vue';
 Vue.config.productionTip = false;
 
 Vue.use<JovoWebClientVueConfig>(JovoWebClientVue, {
-  url: process.env.VUE_APP_CLIENT_ENDPOINT_URL || 'https://webhook.jovo.cloud/<id>',
+  url: process.env.VUE_APP_CLIENT_ENDPOINT_URL || 'http://localhost:3000/webhook',
   client: {
     audioRecorder: {
       startDetection: {
