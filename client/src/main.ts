@@ -16,6 +16,7 @@ Vue.use<JovoWebClientVueConfig>(JovoWebClientVue, {
       },
     },
     speechRecognizer: {
+      lang: 'en',
       startDetection: {
         enabled: false,
       },

@@ -15,6 +15,9 @@ module.exports = {
         '2/6': '33.333333%',
       },
     },
+    boxShadow: {
+      '2xl': '0 10px 50px -12px rgba(0, 0, 0, 0.25)',
+    },
   },
   variants: {},
   plugins: [],

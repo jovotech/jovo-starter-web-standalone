@@ -1,13 +1,13 @@
 <template>
-  <div id="app" class="flex flex-col w-screen h-screen">
+  <div id="app" class="flex flex-col w-screen h-screen bg-gray-300">
     <div class="flex flex-col flex-grow justify-center items-center">
       <div>
-        <p class="text-lg">{{ outputText }}</p>
+        <p class="text-lg text-gray-800">{{ outputText }}</p>
       </div>
     </div>
     <div class="flex flex-col flex-shrink-0 mt-auto justify-center items-center mb-16">
       <div class="mb-4">
-        <p class="text-base">{{ inputText }}</p>
+        <p class="text-base text-gray-800">{{ inputText }}</p>
       </div>
       <record-button />
     </div>
@@ -32,7 +32,7 @@ import { Component, Vue } from 'vue-property-decorator';
 })
 export default class App extends Vue {
   inputText = '';
-  outputText = '';
+  outputText = 'Press the button below to get started.';
 
   mounted() {
     this.$client.$speechRecognizer.on(
