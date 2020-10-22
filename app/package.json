@@ -1,14 +1,13 @@
 {
   "name": "jovo-starter-web-standalone-app",
   "version": "3.0.0",
-  "description": "A sample voice app that works with the Jovo Framework",
+  "description": "A standalone voice experience for the browser, built with Vue.js, Tailwind CSS, and the Jovo Framework",
   "main": "./dist/src/index.js",
   "types": "./dist/src/index.d.ts",
   "dependencies": {
     "jovo-db-filedb": "^3.1.4",
-    "jovo-slu-lex": "^3.1.4",
-    "jovo-tts-polly": "^3.1.4",
     "jovo-framework": "^3.1.4",
+    "jovo-nlu-nlpjs": "^3.1.4",
     "jovo-platform-web": "^3.1.4",
     "jovo-plugin-debugger": "^3.1.4"
   },
