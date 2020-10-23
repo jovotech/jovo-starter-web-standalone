@@ -1,5 +1,6 @@
 import { ExpressJS, Lambda, Webhook } from 'jovo-framework';
 import { app } from './app';
+import * as cors from 'cors';
 
 // ------------------------------------------------------------------
 // HOST CONFIGURATION
@@ -9,6 +10,8 @@ import { app } from './app';
 if (process.argv.indexOf('--webhook') > -1) {
   const port = process.env.JOVO_PORT || 3000;
   Webhook.jovoApp = app;
+
+  Webhook.use(cors());
 
   Webhook.listen(port, () => {
     console.info(`Local server listening on port ${port}.`);
