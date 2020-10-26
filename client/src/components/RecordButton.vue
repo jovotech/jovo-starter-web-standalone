@@ -38,10 +38,6 @@ export default class RecordButton extends Vue {
     }
   }
 
-  // Could be critical for other OS than Windows because those try to get the MediaStream when starting to record.
-  // This will cause the mouse up event to be called before the actual recording has started,
-  // which will then cause the recording to not be stopped on immediate mouse up
-  // TODO find a solution for the issue mentioned above
   async onMouseDown(event: MouseEvent | TouchEvent) {
     if (this.$client.isInitialized) {
       event.preventDefault();
