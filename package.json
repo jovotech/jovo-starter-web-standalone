@@ -1,0 +1,11 @@
+{
+  "name": "jovo-starter-web-standalone",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "postinstall": "npm run setup",
+    "setup": "npm run setup:app & npm run setup:client",
+    "setup:app": "cd app && npm i && cd ..",
+    "setup:client": "cd client && npm i && cd .."
+  }
+}
