@@ -2,12 +2,12 @@
   <div id="app" class="flex flex-col w-screen h-screen bg-gray-300 dark:bg-gray-900">
     <div class="flex flex-col flex-grow justify-center items-center">
       <div>
-        <p class="text-lg text-gray-800 dark:text-white">{{ outputText }}</p>
+        <p class="text-lg text-gray-800 dark:text-gray-400">{{ outputText }}</p>
       </div>
     </div>
     <div class="flex flex-col flex-shrink-0 mt-auto justify-center items-center mb-16">
       <div class="mb-4">
-        <p class="text-base text-gray-800 dark:text-white">{{ inputText }}</p>
+        <p class="text-base text-gray-800 dark:text-gray-400">{{ inputText }}</p>
       </div>
       <record-button />
     </div>

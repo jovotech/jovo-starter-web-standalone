@@ -1,12 +1,12 @@
 <template>
   <button
-    class="bg-gray-100 hover:bg-white rounded-full p-8 focus:outline-none shadow-2xl"
+    class="bg-gray-100 dark:bg-gray-800 hover:bg-white dark:hover:bg-gray-700 rounded-full p-8 focus:outline-none shadow-2xl"
     @mousedown="onMouseDown"
     @touchstart="onMouseDown"
     @click="onClick"
   >
     <play-icon v-if="!$client.isInitialized" class="text-gray-700" />
-    <mic-icon v-else :class="[$client.isRecordingInput ? 'text-red-600' : 'text-gray-700']" />
+    <mic-icon v-else :class="[$client.isRecordingInput ? 'text-red-600' : 'text-gray-700 dark:text-gray-300']" />
   </button>
 </template>
 
