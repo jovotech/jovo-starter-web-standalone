@@ -2,28 +2,33 @@
   "invocation": "my test app",
   "intents": [
     {
-      "name": "ColorIntent",
-      "phrases": ["{color}", "color {color}", "i want {color}"],
+      "name": "SwitchThemeIntent",
+      "phrases": [
+        "{theme}",
+        "switch to {theme} mode",
+        "{theme} mode",
+        "enable {theme} mode",
+        "{theme} theme",
+        "switch to the {theme} theme",
+        "I want the {theme} theme"
+      ],
       "inputs": [
         {
-          "name": "color",
-          "type": "ColorType"
+          "name": "theme",
+          "type": "ThemeType"
         }
       ]
     }
   ],
   "inputTypes": [
     {
-      "name": "ColorType",
+      "name": "ThemeType",
       "values": [
         {
-          "value": "red"
+          "value": "dark"
         },
         {
-          "value": "green"
-        },
-        {
-          "value": "blue"
+          "value": "light"
         }
       ]
     }

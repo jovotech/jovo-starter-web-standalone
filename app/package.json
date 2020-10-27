@@ -6,11 +6,11 @@
   "types": "./dist/src/index.d.ts",
   "dependencies": {
     "cors": "^2.8.5",
-    "jovo-db-filedb": "^3.1.4",
-    "jovo-framework": "^3.1.4",
+    "jovo-db-filedb": "^3.1.5",
+    "jovo-framework": "^3.1.5",
     "jovo-nlu-nlpjs": "^3.1.4",
-    "jovo-platform-web": "^3.1.4",
-    "jovo-plugin-debugger": "^3.1.4"
+    "jovo-platform-web": "^3.1.5",
+    "jovo-plugin-debugger": "^3.1.5"
   },
   "devDependencies": {
     "@types/cors": "^2.8.8",

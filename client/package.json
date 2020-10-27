@@ -9,8 +9,9 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "tailwindcss": "^1.9.5",
     "jovo-client-web-vue": "^3.1.4",
+    "postcss-selector-parser": "^6.0.4",
+    "tailwindcss": "^1.9.5",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
     "vue-feather-icons": "^5.1.0",

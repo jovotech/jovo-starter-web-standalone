@@ -1,13 +1,13 @@
 <template>
-  <div id="app" class="flex flex-col w-screen h-screen bg-gray-300">
+  <div id="app" class="flex flex-col w-screen h-screen bg-gray-300 dark:bg-gray-900">
     <div class="flex flex-col flex-grow justify-center items-center">
       <div>
-        <p class="text-lg text-gray-800">{{ outputText }}</p>
+        <p class="text-lg text-gray-800 dark:text-white">{{ outputText }}</p>
       </div>
     </div>
     <div class="flex flex-col flex-shrink-0 mt-auto justify-center items-center mb-16">
       <div class="mb-4">
-        <p class="text-base text-gray-800">{{ inputText }}</p>
+        <p class="text-base text-gray-800 dark:text-white">{{ inputText }}</p>
       </div>
       <record-button />
     </div>
@@ -17,6 +17,8 @@
 <script lang="ts">
 import RecordButton from '@/components/RecordButton.vue';
 import {
+  Action,
+  ActionType,
   AudioHelper,
   ClientEvent,
   RequestType,
@@ -41,6 +43,7 @@ export default class App extends Vue {
     );
     this.$client.on(ClientEvent.Request, this.onRequest);
     this.$client.on(ClientEvent.Response, this.onResponse);
+    this.$client.on(ClientEvent.Action, this.onAction);
     this.$client.$speechSynthesizer.on(SpeechSynthesizerEvent.Speak, this.onSpeechSpeak);
   }
 
@@ -72,6 +75,30 @@ export default class App extends Vue {
 
   private onSpeechSpeak(utterance: SpeechSynthesisUtterance) {
     this.outputText = utterance.text;
+  }
+
+  private onAction(action: Action) {
+    if (action.type === ActionType.Custom) {
+      switch (action.command) {
+        case 'set-theme': {
+          this.toggleDarkMode(action.value);
+          break;
+        }
+        default:
+      }
+    }
+  }
+
+  private toggleDarkMode(theme: 'dark' | 'light') {
+    if (theme === 'dark') {
+      if (!document.documentElement.classList.contains('mode-dark')) {
+        document.documentElement.classList.add('mode-dark');
+      }
+    } else if (theme === 'light') {
+      if (document.documentElement.classList.contains('mode-dark')) {
+        document.documentElement.classList.remove('mode-dark');
+      }
+    }
   }
 }
 </script>
