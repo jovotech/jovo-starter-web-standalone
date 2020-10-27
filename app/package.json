@@ -9,8 +9,7 @@
     "jovo-db-filedb": "^3.1.5",
     "jovo-framework": "^3.1.5",
     "jovo-nlu-nlpjs": "^3.1.4",
-    "jovo-platform-web": "^3.1.5",
-    "jovo-plugin-debugger": "^3.1.5"
+    "jovo-platform-web": "^3.1.5"
   },
   "devDependencies": {
     "@types/cors": "^2.8.8",

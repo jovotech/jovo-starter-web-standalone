@@ -25,14 +25,14 @@ app.use(webPlatform, new FileDb());
 
 app.setHandler({
   LAUNCH() {
-    return this.ask('Hold the microphone button and try to change the background color to blue.');
+    return this.tell('You can say "switch to dark mode" or "light mode."');
   },
 
   SwitchThemeIntent() {
     const theme = this.$inputs.theme?.key;
 
     if (theme !== 'dark' && theme !== 'light') {
-      return this.tell('You can switch to either light or dark mode by saying "switch to dark mode" or "switch to light mode".');
+      return this.toIntent('Unhandled');
     }
 
     this.$webApp?.addActions([
@@ -42,11 +42,11 @@ app.setHandler({
         value: theme,
       },
     ]);
-    return this.tell(`Alright, I am switching to ${theme} mode.`);
+    return this.tell(`OK, ${theme} mode.`);
   },
 
   Unhandled() {
-    return this.tell('You can switch to either light or dark mode by saying "switch to dark mode" or "switch to light mode."');
+    return this.toIntent('LAUNCH');
   }
 });
 
