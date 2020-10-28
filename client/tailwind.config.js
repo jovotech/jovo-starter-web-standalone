@@ -22,7 +22,10 @@ module.exports = {
       '2xl': '0 10px 50px -12px rgba(0, 0, 0, 0.25)',
     },
   },
-  variants: ['dark'], // TODO: don't enable variant globally (increases file size)
+  variants: {
+    backgroundColor: ({ before }) => before(['dark']),
+    textColor: ({ before }) => before(['dark']),
+  },
   plugins: [
     plugin(function({ addVariant, theme, e, prefix }) {
       const darkSelector = theme('darkSelector', '.mode-dark');
