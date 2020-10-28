@@ -6,7 +6,10 @@
     @click="onClick"
   >
     <play-icon v-if="!$client.isInitialized" class="text-gray-700" />
-    <mic-icon v-else :class="[$client.isRecordingInput ? 'text-red-600' : 'text-gray-700 dark:text-gray-300']" />
+    <mic-icon
+      v-else
+      :class="[$client.isRecordingInput ? 'text-red-600' : 'text-gray-700 dark:text-gray-300']"
+    />
   </button>
 </template>
 
@@ -54,7 +57,11 @@ export default class RecordButton extends Vue {
   }
 
   private onMouseUp(event: MouseEvent | TouchEvent) {
-    window.removeEventListener('mouseup', this.onMouseUp);
+    if (event instanceof MouseEvent) {
+      window.removeEventListener('mouseup', this.onMouseUp);
+    } else {
+      window.removeEventListener('touchend', this.onMouseUp);
+    }
     this.$client.stopInputRecording();
   }
 
