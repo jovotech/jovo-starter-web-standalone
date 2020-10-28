@@ -33,7 +33,7 @@ export default class RecordButton extends Vue {
     }
   }
 
-  async onClick(event: MouseEvent) {
+  async onClick() {
     if (!this.$client.isInitialized) {
       await this.$client.initialize();
       await this.$client.createRequest({ type: RequestType.Launch }).send();
