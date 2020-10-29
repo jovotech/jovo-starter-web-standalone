@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
-
+body {
+  -webkit-tap-highlight-color: transparent;
+}
 .scrollbar {
   &::-webkit-scrollbar {
     @apply w-1 h-1;
@@ -25,3 +27,4 @@
     }
   }
 }
+
