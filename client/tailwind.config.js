@@ -51,6 +51,7 @@ module.exports = {
   variants: {
     backgroundColor: ({ before }) => before(['dark']),
     textColor: ({ before }) => before(['dark']),
+    animation: ({ before }) => before(['dark']),
   },
   plugins: [
     plugin(function({ addVariant, theme, e, prefix }) {

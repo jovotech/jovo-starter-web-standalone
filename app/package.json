@@ -9,7 +9,7 @@
     "jovo-db-filedb": "^3.2.0",
     "jovo-framework": "^3.2.0",
     "jovo-nlu-nlpjs": "^3.2.0",
-    "jovo-platform-web": "^3.2.0"
+    "jovo-platform-web": "^3.2.1"
   },
   "devDependencies": {
     "@types/cors": "^2.8.8",
