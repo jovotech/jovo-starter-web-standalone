@@ -1,15 +1,25 @@
 <template>
   <div id="app" class="flex flex-col w-screen h-screen bg-gray-300 dark:bg-gray-900">
-    <div class="flex flex-col flex-grow justify-center items-center">
-      <div class="px-8">
-        <p class="text-lg text-center text-gray-800 dark:text-gray-400">{{ outputText }}</p>
+    <div v-if="$client.$speechRecognizer.isAvailable" class="flex flex-col flex-grow justify-center items-center">
+      <div class="flex flex-col flex-grow justify-center items-center">
+        <div class="px-8">
+          <p class="text-lg text-center text-gray-800 dark:text-gray-400">{{ outputText }}</p>
+        </div>
+      </div>
+      <div class="flex flex-col flex-shrink-0 mt-auto justify-center items-center mb-16">
+        <div class="mb-4 px-8">
+          <p class="text-base text-center text-gray-800 dark:text-gray-400">{{ inputText }}</p>
+        </div>
+        <record-button />
       </div>
     </div>
-    <div class="flex flex-col flex-shrink-0 mt-auto justify-center items-center mb-16">
-      <div class="mb-4 px-8">
-        <p class="text-base text-center text-gray-800 dark:text-gray-400">{{ inputText }}</p>
+    <div v-else class="flex flex-col flex-grow justify-center items-center">
+      <div class="px-8">
+        <p class="text-lg text-center text-gray-800 dark:text-gray-400">
+          This demo uses the Chrome Web Speech API, which unfortunately isn't supported in this
+          browser.
+        </p>
       </div>
-      <record-button />
     </div>
   </div>
 </template>
