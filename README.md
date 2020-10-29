@@ -28,9 +28,9 @@ Demo: [jovo.tech/demos/starter-web-standalone](https://www.jovo.tech/demos/start
     $ npm i -g jovo-cli
 
     # This will download the template and install the dependencies
-    $ jovo new my-embeddedchat --template starter-web-embeddedchat
+    $ jovo new my-voice-app --template starter-web-standalone
 
-    $ cd my-embeddedchat
+    $ cd my-voice-app
     ```
     Alternatively, you can clone this repository and run `npm install`.
 
