@@ -1,6 +1,9 @@
 <template>
   <div id="app" class="flex flex-col w-screen h-screen bg-gray-300 dark:bg-gray-900">
-    <div v-if="$client.$speechRecognizer.isAvailable" class="flex flex-col flex-grow justify-center items-center">
+    <div
+      v-if="$client.$speechRecognizer.isAvailable"
+      class="flex flex-col flex-grow justify-center items-center"
+    >
       <div class="flex flex-col flex-grow justify-center items-center">
         <div class="px-8">
           <p class="text-lg text-center text-gray-800 dark:text-gray-400">{{ outputText }}</p>
@@ -114,9 +117,10 @@ export default class App extends Vue {
 </script>
 
 <style>
-@import 'assets/css/theme.css';
+@import 'assets/css/theme.pcss';
 
 #app {
+  -webkit-tap-highlight-color: transparent;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
