@@ -1,6 +1,6 @@
 <template>
   <button
-    class="bg-gray-100 dark:bg-gray-800 hover:bg-white dark:hover:bg-gray-700 rounded-full p-8 focus:outline-none shadow-2xl"
+    class="bg-gray-100 dark:bg-gray-800 rounded-full p-8 focus:outline-none shadow-2xl"
     :class="[
       $client.isRecordingInput ? 'shadow-inner animate-ripple dark:animate-ripple-dark' : '',
     ]"
