@@ -112,7 +112,7 @@ The `app.ts` file contains the initialization of the app and its plugins as well
 
 > Take a look at the Vue deployment docs [here](https://cli.vuejs.org/guide/deployment).
 
-To integrate Jovo Embedded Chat into your existing project, you can use the npm script `build` inside of the `client/` directory. This will produce a bundle in a dedicated `dist/` directory, containing the whole Vue.js client with minified HTML, CSS and JavaScript, ready for dynamic integration into any website.
+To integrate Jovo Web Standalone into your existing project, you can use the npm script `build` inside of the `client/` directory. This will produce a bundle in a dedicated `dist/` directory, containing the whole Vue.js client with minified HTML, CSS and JavaScript, ready for dynamic integration into any website.
 
 ### App
 
