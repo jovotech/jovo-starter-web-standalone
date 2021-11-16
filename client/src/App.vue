@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="flex flex-col w-screen h-screen bg-gray-300 dark:bg-gray-900">
     <div
-      v-if="$client.$speechRecognizer.isAvailable"
+      v-if="$client.speechRecognizer.isAvailable"
       class="flex flex-col flex-grow justify-center items-center"
     >
       <div class="flex flex-col flex-grow justify-center items-center">
@@ -30,16 +30,13 @@
 <script lang="ts">
 import RecordButton from '@/components/RecordButton.vue';
 import {
-  Action,
-  ActionType,
   AudioHelper,
   ClientEvent,
-  RequestType,
+  ClientRequest,
+  NormalizedOutputTemplate,
   SpeechRecognizerEvent,
   SpeechSynthesizerEvent,
-  WebRequest,
-  WebResponse,
-} from 'jovo-client-web-vue';
+} from '@jovotech/client-web-vue2';
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component({
@@ -50,39 +47,31 @@ export default class App extends Vue {
   outputText = 'Press the button below to get started.';
 
   mounted() {
-    this.$client.$speechRecognizer.on(
+    this.$client.speechRecognizer.on(
       SpeechRecognizerEvent.SpeechRecognized,
       this.onSpeechRecognized,
     );
     this.$client.on(ClientEvent.Request, this.onRequest);
-    this.$client.on(ClientEvent.Response, this.onResponse);
-    this.$client.on(ClientEvent.Action, this.onAction);
-    this.$client.$speechSynthesizer.on(SpeechSynthesizerEvent.Speak, this.onSpeechSpeak);
+    this.$client.on(ClientEvent.Output, this.onOutput);
+    this.$client.speechSynthesizer.on(SpeechSynthesizerEvent.Speak, this.onSpeechSpeak);
   }
 
   beforeDestroy() {
-    this.$client.$speechRecognizer.off(
+    this.$client.speechRecognizer.off(
       SpeechRecognizerEvent.SpeechRecognized,
       this.onSpeechRecognized,
     );
     this.$client.off(ClientEvent.Request, this.onRequest);
-    this.$client.off(ClientEvent.Response, this.onResponse);
-    this.$client.$speechSynthesizer.off(SpeechSynthesizerEvent.Speak, this.onSpeechSpeak);
+    this.$client.speechSynthesizer.off(SpeechSynthesizerEvent.Speak, this.onSpeechSpeak);
   }
 
   private onSpeechRecognized(event: SpeechRecognitionEvent) {
     this.inputText = AudioHelper.textFromSpeechRecognition(event);
   }
 
-  private onRequest(req: WebRequest) {
-    if (req.request.type === RequestType.Text || req.request.type === RequestType.TranscribedText) {
-      this.inputText = req.request.body.text || '';
-    }
-  }
-
-  private onResponse(res: WebResponse) {
-    if (res.context.request.asr?.text) {
-      this.inputText = res.context.request.asr.text;
+  private onRequest(req: ClientRequest) {
+    if (req.input?.text) {
+      this.inputText = req.input.text || '';
     }
   }
 
@@ -90,15 +79,14 @@ export default class App extends Vue {
     this.outputText = utterance.text;
   }
 
-  private onAction(action: Action) {
-    if (action.type === ActionType.Custom) {
-      switch (action.command) {
-        case 'set-theme': {
-          this.toggleDarkMode(action.value);
-          break;
-        }
-        default:
-      }
+  private isValidTheme(theme?: unknown): theme is 'light' | 'dark' {
+    return !!theme && typeof theme === 'string' && ['light', 'dark'].includes(theme);
+  }
+
+  private onOutput(output: NormalizedOutputTemplate) {
+    const theme = output.platforms?.web?.theme;
+    if (this.isValidTheme(theme)) {
+      this.toggleDarkMode(theme);
     }
   }
 

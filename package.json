@@ -1,11 +1,21 @@
 {
   "name": "jovo-starter-web-standalone",
-  "version": "3.2.0",
+  "version": "4.0.0",
   "private": true,
   "scripts": {
     "postinstall": "npm run setup",
     "setup": "npm run setup:app & npm run setup:client",
     "setup:app": "cd app && npm i && cd ..",
     "setup:client": "cd client && npm i && cd .."
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jovotech/jovo-starter-web-standalone.git"
+  },
+  "author": "jovotech",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/jovotech/jovo-starter-web-standalone/issues"
+  },
+  "homepage": "https://github.com/jovotech/jovo-starter-web-standalone#readme"
 }

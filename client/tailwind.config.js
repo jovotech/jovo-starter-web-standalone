@@ -3,8 +3,6 @@ const selectorParser = require('postcss-selector-parser');
 
 module.exports = {
   future: {
-    defaultLineHeights: true,
-    standardFontWeights: true,
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,
   },

@@ -1,8 +1,8 @@
 {
   "invocation": "my test app",
-  "intents": [
-    {
-      "name": "SwitchThemeIntent",
+  "version": "4.0",
+  "intents": {
+    "SwitchThemeIntent": {
       "phrases": [
         "{theme}",
         "switch to {theme} mode",
@@ -10,27 +10,43 @@
         "enable {theme} mode",
         "{theme} theme",
         "switch to the {theme} theme",
-        "I want the {theme} theme"
+        "i want the {theme} theme"
       ],
-      "inputs": [
-        {
-          "name": "theme",
+      "entities": {
+        "theme": {
           "type": "ThemeType"
         }
-      ]
+      }
     }
-  ],
-  "inputTypes": [
-    {
-      "name": "ThemeType",
+  },
+  "entityTypes": {
+    "ThemeType": {
       "values": [
         {
-          "value": "dark"
-        },
-        {
           "value": "light"
-        }
+        },
+        { "value": "dark" }
       ]
     }
-  ]
+  },
+  "alexa": {
+    "interactionModel": {
+      "languageModel": {
+        "intents": [
+          {
+            "name": "AMAZON.CancelIntent",
+            "samples": []
+          },
+          {
+            "name": "AMAZON.HelpIntent",
+            "samples": []
+          },
+          {
+            "name": "AMAZON.StopIntent",
+            "samples": []
+          }
+        ]
+      }
+    }
+  }
 }

@@ -1,53 +1,71 @@
-import { App } from 'jovo-framework';
-import { WebPlatform } from 'jovo-platform-web';
-import { ActionType } from 'jovo-platform-core';
-import { FileDb } from 'jovo-db-filedb';
-import { NlpjsNlu } from 'jovo-nlu-nlpjs';
+import { App } from '@jovotech/framework';
+import { NlpjsNlu } from '@jovotech/nlu-nlpjs';
+import { WebPlatform } from '@jovotech/platform-web';
+import { LangEn } from '@nlpjs/lang-en';
+import { GlobalComponent } from './components/GlobalComponent';
+/*
+|--------------------------------------------------------------------------
+| APP CONFIGURATION
+|--------------------------------------------------------------------------
+|
+| All relevant components, plugins, and configurations for your Jovo app
+| Learn more here: v4.jovo.tech/docs/app-config
+|
+*/
 
-// ------------------------------------------------------------------
-// APP INITIALIZATION
-// ------------------------------------------------------------------
+const app = new App({
+  /*
+  |--------------------------------------------------------------------------
+  | Components
+  |--------------------------------------------------------------------------
+  |
+  | Components contain the Jovo app logic
+  | Learn more here: v4.jovo.tech/docs/components
+  |
+  */
 
-const app = new App();
+  components: [GlobalComponent],
 
-const webPlatform = new WebPlatform();
-webPlatform.use(
-  new NlpjsNlu(),
-);
+  /*
+  |--------------------------------------------------------------------------
+  | Plugins
+  |--------------------------------------------------------------------------
+  |
+  | Includes platforms, database integrations, third-party plugins, and more
+  | Learn more here: v4.jovo.tech/marketplace
+  |
+  */
 
-app.use(webPlatform, new FileDb());
+  plugins: [
+    // Add Jovo plugins here
+    new WebPlatform({
+      plugins: [
+        new NlpjsNlu({
+          languageMap: {
+            en: LangEn,
+          },
+        }),
+      ],
+    }),
+  ],
 
+  /*
+  |--------------------------------------------------------------------------
+  | Other options
+  |--------------------------------------------------------------------------
+  |
+  | Includes all other configuration options like logging
+  | Learn more here: v4.jovo.tech/docs/app-config
+  |
+  */
 
+  logging: true,
 
-// ------------------------------------------------------------------
-// APP LOGIC
-// ------------------------------------------------------------------
-
-app.setHandler({
-  LAUNCH() {
-    return this.tell('You can say "switch to dark mode" or "light mode."');
+  routing: {
+    intentMap: {
+      'AMAZON.StopIntent': 'END',
+    },
   },
-
-  SwitchThemeIntent() {
-    const theme = this.$inputs.theme?.key;
-
-    if (theme !== 'dark' && theme !== 'light') {
-      return this.toIntent('Unhandled');
-    }
-
-    this.$webApp?.addActions([
-      {
-        type: ActionType.Custom,
-        command: 'set-theme',
-        value: theme,
-      },
-    ]);
-    return this.tell(`OK, ${theme} mode.`);
-  },
-
-  Unhandled() {
-    return this.toIntent('LAUNCH');
-  }
 });
 
 export { app };
