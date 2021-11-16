@@ -8,23 +8,47 @@
     @touchstart="onMouseDown"
     @click="onClick"
   >
-    <play-icon v-if="!$client.isInitialized" class="text-gray-700" />
-    <mic-icon v-else class="text-gray-700 dark:text-gray-300" />
+    <svg
+      v-if="!$client.isInitialized"
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-6 w-6 text-gray-700"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M13 5l7 7-7 7M5 5l7 7-7 7"
+      />
+    </svg>
+
+    <svg
+      v-else
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-6 w-6 text-gray-700 dark:text-gray-300"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"
+      />
+    </svg>
   </button>
 </template>
 
 <script lang="ts">
-import MicIcon from 'vue-feather-icons/icons/MicIcon';
-import PlayIcon from 'vue-feather-icons/icons/PlayIcon';
+import { InputType } from '@jovotech/client-web-vue2';
 import { Component, Vue } from 'vue-property-decorator';
-import { RequestType } from 'jovo-client-web-vue';
 
 @Component({
   name: 'record-button',
-  components: {
-    MicIcon,
-    PlayIcon,
-  },
+  components: {},
 })
 export default class RecordButton extends Vue {
   beforeDestroy() {
@@ -36,7 +60,9 @@ export default class RecordButton extends Vue {
   async onClick() {
     if (!this.$client.isInitialized) {
       await this.$client.initialize();
-      await this.$client.createRequest({ type: RequestType.Launch }).send();
+      await this.$client.send({
+        type: InputType.Launch,
+      });
       window.addEventListener('keydown', this.onKeyDown);
     }
   }
@@ -53,7 +79,7 @@ export default class RecordButton extends Vue {
     } else {
       window.addEventListener('touchend', this.onMouseUp);
     }
-    await this.$client.startInputRecording();
+    await this.$client.startRecording();
   }
 
   private onMouseUp(event: MouseEvent | TouchEvent) {
@@ -62,20 +88,20 @@ export default class RecordButton extends Vue {
     } else {
       window.removeEventListener('touchend', this.onMouseUp);
     }
-    this.$client.stopInputRecording();
+    this.$client.stopRecording();
   }
 
   private async onKeyDown(event: KeyboardEvent) {
     if (event.key === ' ') {
       window.addEventListener('keyup', this.onKeyUp);
-      await this.$client.startInputRecording();
+      await this.$client.startRecording();
     }
   }
 
   private async onKeyUp(event: KeyboardEvent) {
     if (event.key === ' ') {
       window.removeEventListener('keyup', this.onKeyUp);
-      this.$client.stopInputRecording();
+      this.$client.stopRecording();
     }
   }
 }

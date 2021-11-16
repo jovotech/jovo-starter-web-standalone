@@ -3,6 +3,7 @@ module.exports = {
   chainWebpack: (config) => {
     config.resolve.symlinks(false)
   },
+  transpileDependencies: ['@jovotech/client-web-vue2', '@jovotech/client-web'],
   publicPath: process.env.PUBLICPATH || '',
   css: {
     loaderOptions: {
