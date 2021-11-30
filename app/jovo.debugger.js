@@ -14,7 +14,11 @@ const debuggerConfig = new DebuggerConfig({
       input: {
         intent: 'SwitchThemeIntent',
         entities: {
-          theme: 'light',
+          theme: {
+            resolved: 'light',
+            id: 'light',
+            value: 'light',
+          },
         },
       },
     },
@@ -23,7 +27,11 @@ const debuggerConfig = new DebuggerConfig({
       input: {
         intent: 'SwitchThemeIntent',
         entities: {
-          theme: 'dark',
+          theme: {
+            resolved: 'dark',
+            id: 'dark',
+            value: 'dark',
+          },
         },
       },
     },
