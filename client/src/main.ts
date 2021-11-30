@@ -31,6 +31,9 @@ Vue.use<JovoWebClientVueConfig>(JovoWebClientVue, {
         enabled: false,
       },
     },
+    store: {
+      shouldPersistSession: false,
+    },
   },
 });
 
