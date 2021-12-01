@@ -27,7 +27,7 @@ Demo: [jovo.tech/demos/starter-web-standalone](https://www.jovo.tech/demos/start
     ```sh
     git clone https://github.com/jovotech/jovo-starter-web-standalone.git
 
-    cd jovo-start-web-standalone
+    cd jovo-starter-web-standalone
 
     npm install
     ```
