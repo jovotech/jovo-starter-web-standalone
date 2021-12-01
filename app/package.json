@@ -16,18 +16,18 @@
     "eslint": "eslint src test --fix --ext .ts"
   },
   "dependencies": {
-    "@jovotech/db-filedb": "^4.0.0-beta.9",
-    "@jovotech/framework": "^4.0.0-beta.9",
-    "@jovotech/nlu-nlpjs": "^4.0.0-beta.9",
-    "@jovotech/platform-web": "^4.0.0-beta.1",
-    "@jovotech/plugin-debugger": "^4.0.0-beta.9",
-    "@jovotech/server-express": "^4.0.0-beta.9",
+    "@jovotech/db-filedb": "^4.0.0",
+    "@jovotech/framework": "^4.0.0",
+    "@jovotech/nlu-nlpjs": "^4.0.0",
+    "@jovotech/platform-web": "^4.0.0",
+    "@jovotech/plugin-debugger": "^4.0.0",
+    "@jovotech/server-express": "^4.0.0",
     "@nlpjs/lang-en": "^4.22.0",
     "cors": "^2.8.5",
     "source-map-support": "^0.5.19"
   },
   "devDependencies": {
-    "@jovotech/cli-core": "^4.0.0-beta.1",
+    "@jovotech/cli-core": "^4.0.0",
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.11",
     "@types/jest": "^27.0.2",
@@ -44,11 +44,11 @@
     "ts-jest": "^27.0.7",
     "tsc-watch": "^4.2.9",
     "typescript": "^4.2.3",
-    "@jovotech/cli-command-build": "^4.0.0-beta.6",
-    "@jovotech/cli-command-get": "^4.0.0-beta.6",
-    "@jovotech/cli-command-run": "^4.0.0-beta.6",
-    "@jovotech/cli-command-new": "^4.0.0-beta.6",
-    "@jovotech/cli-command-deploy": "^4.0.0-beta.6",
+    "@jovotech/cli-command-build": "^4.0.0",
+    "@jovotech/cli-command-get": "^4.0.0",
+    "@jovotech/cli-command-run": "^4.0.0",
+    "@jovotech/cli-command-new": "^4.0.0-",
+    "@jovotech/cli-command-deploy": "^4.0.0",
     "@jovotech/filebuilder": "^0.0.1"
   },
   "repository": {
