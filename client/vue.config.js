@@ -1,7 +1,7 @@
 module.exports = {
   parallel: false,
   chainWebpack: (config) => {
-    config.resolve.symlinks(false)
+    config.resolve.symlinks(false);
   },
   transpileDependencies: ['@jovotech/client-web-vue2', '@jovotech/client-web'],
   publicPath: process.env.PUBLICPATH || '',

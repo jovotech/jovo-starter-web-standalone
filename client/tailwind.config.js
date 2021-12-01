@@ -52,7 +52,7 @@ module.exports = {
     animation: ({ before }) => before(['dark']),
   },
   plugins: [
-    plugin(function({ addVariant, theme, e, prefix }) {
+    plugin(function ({ addVariant, theme, e, prefix }) {
       const darkSelector = theme('darkSelector', '.mode-dark');
 
       addVariant('dark', ({ modifySelectors, separator }) => {
