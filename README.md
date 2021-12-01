@@ -4,8 +4,6 @@ Fully customizable open source voice experience that can be hosted on any websit
 
 Built with the [Jovo Framework](https://github.com/jovotech/jovo-framework), [Vue.js 2](https://github.com/vuejs/vue), and [Tailwind CSS](https://github.com/tailwindlabs/tailwindcss).
 
-Demo: [jovo.tech/demos/starter-web-standalone](https://www.jovo.tech/demos/starter-web-standalone/).
-
 ![Jovo Standalone Voice Experience](./img/starter-web-standalone.gif)
 
 > Support Jovo by starring [our main repo](https://github.com/jovotech/jovo-framework) or joining [our Open Collective](https://opencollective.com/jovo-framework).
